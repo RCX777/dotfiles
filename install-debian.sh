@@ -25,7 +25,16 @@ command -v nvim > /dev/null || ( \
     rm ./nvim-linux-x86_64.deb \
 )
 
+# Change default shell to zsh
 sudo usermod -s $(which zsh) "$USER"
+
+# Install custom user systemd services
+SYSTEMD_USER_PATH="$HOME"/.config/systemd/user
+
+mkdir -p $SYSTEMD_USER_PATH
+cp -r ./services/* $SYSTEMD_USER_PATH
+systemctl --user enable ssh-agent
+systemctl --user start ssh-agent
 
 NVIM_CONFIG_PATH="$HOME"/.config/nvim
 TMUX_CONFIG_PATH="$HOME"/.config/tmux
