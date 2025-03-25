@@ -13,7 +13,8 @@ sudo apt-get install -y \
     npm \
     tmux \
     zsh \
-    zoxide
+    zoxide \
+    direnv
 
 # Fast Python package manager (uv)
 curl -LsSf https://astral.sh/uv/install.sh | sh
