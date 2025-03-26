@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+BASE_PATH=$(dirname "$0")
+
 # Upgrade system & Add some useful packages
 sudo apt-get update -y && sudo apt-get upgrade -y && \
 sudo apt-get install -y \
@@ -18,6 +20,7 @@ sudo apt-get install -y \
 
 # Fast Python package manager (uv)
 curl -LsSf https://astral.sh/uv/install.sh | sh
+uv tool install bump-my-version
 
 # Install neovim 0.10.4
 command -v nvim > /dev/null || ( \
@@ -32,8 +35,8 @@ sudo usermod -s $(which zsh) "$USER"
 # Install custom user systemd services
 SYSTEMD_USER_PATH="$HOME"/.config/systemd/user
 
-mkdir -p $SYSTEMD_USER_PATH
-cp -r ./services/* $SYSTEMD_USER_PATH
+mkdir -p "$SYSTEMD_USER_PATH"
+cp -r "$BASE_PATH"/services/* "$SYSTEMD_USER_PATH"
 systemctl --user enable ssh-agent
 systemctl --user start ssh-agent
 
@@ -42,7 +45,7 @@ TMUX_CONFIG_PATH="$HOME"/.config/tmux
 ZSH_CONFIG_PATH="$HOME"/.config/zsh
 
 [ ! -d $NVIM_CONFIG_PATH ] && \
-    git clone https://github.com/RCX777/neovim-config $NVIM_CONFIG_PATH
+    git clone https://github.com/RCX777/neovim-config "$NVIM_CONFIG_PATH"
 
 [ ! -d $ZSH_CONFIG_PATH ] && \
     git clone https://github.com/RCX777/zsh-config && \
