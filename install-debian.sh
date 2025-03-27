@@ -25,6 +25,7 @@ source "$BASE_PATH"/jfrog-cli-install.sh
 # Fast Python package manager (uv)
 command -v uv > /dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
 uv tool install bump-my-version
+uv tool install basedpyright
 
 # Install neovim 0.10.4
 command -v nvim > /dev/null || ( \
