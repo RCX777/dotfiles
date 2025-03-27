@@ -10,14 +10,16 @@ sudo apt-get install -y \
     lsd \
     ripgrep \
     python-is-python3 \
-    python3.12-venv \
-    python3.12-dev \
+    python3-venv \
+    python3-dev \
     libreadline-dev \
     npm \
     tmux \
     zsh \
-    zoxide \
     direnv
+
+# Zoxide (smarter cd command)
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 # JFrog CLI
 source "$BASE_PATH"/jfrog-cli-install.sh
