@@ -56,11 +56,11 @@ ZSH_CONFIG_PATH="$HOME"/.config/zsh
 
 [ ! -d $ZSH_CONFIG_PATH ] && \
     git clone https://github.com/RCX777/zsh-config "$BASE_PATH"/.temp-zsh-config && \
-    "$BASE_PATH"/.temp-zsh-config/install.sh && \
+    bash "$BASE_PATH"/.temp-zsh-config/install.sh && \
     rm -rf "$BASE_PATH"/.temp-zsh-config
 
 [ ! -d $TMUX_CONFIG_PATH ] && \
     git clone https://github.com/RCX777/tmux-config "$BASE_PATH"/.temp-tmux-config && \
-    "$BASE_PATH"/.temp-tmux-config/install.sh && \
+    bash "$BASE_PATH"/.temp-tmux-config/install.sh && \
     rm -rf "$BASE_PATH"/.temp-tmux-config
 
