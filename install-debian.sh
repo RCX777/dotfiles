@@ -3,7 +3,7 @@
 BASE_PATH=$(dirname "$0")
 
 # Upgrade system & Add some useful packages
-sudo apt-get update -y && sudo apt-get upgrade -y && \
+sudo apt-get update -y && sudo apt-get full-upgrade -y && \
 sudo apt-get install -y \
     build-essential \
     tcpreplay \
@@ -18,8 +18,11 @@ sudo apt-get install -y \
     zoxide \
     direnv
 
+# JFrog CLI
+source "$BASE_PATH"/jfrog-cli-install.sh
+
 # Fast Python package manager (uv)
-curl -LsSf https://astral.sh/uv/install.sh | sh
+command -v uv > /dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
 uv tool install bump-my-version
 
 # Install neovim 0.10.4
@@ -49,15 +52,11 @@ ZSH_CONFIG_PATH="$HOME"/.config/zsh
 
 [ ! -d $ZSH_CONFIG_PATH ] && \
     git clone https://github.com/RCX777/zsh-config && \
-    cd zsh-config && \
     . ./install.sh && \
-    cd .. && \
     rm -rf zsh-config
 
 [ ! -d $TMUX_CONFIG_PATH ] && \
     git clone https://github.com/RCX777/tmux-config && \
-    cd tmux-config && \
     . ./install.sh && \
-    cd .. && \
     rm -rf zsh-config
 
