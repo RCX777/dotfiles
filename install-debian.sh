@@ -9,6 +9,7 @@ sudo apt-get install -y \
     tcpreplay \
     lsd \
     ripgrep \
+    python-is-python3 \
     python3.12-venv \
     python3.12-dev \
     libreadline-dev \
